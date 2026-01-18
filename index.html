@@ -151,6 +151,12 @@
             animation: none;
             height: 4px;
         }
+
+        /* Galeria Masonry Simples */
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 <body class="bg-wedding-light text-wedding-dark antialiased overflow-x-hidden selection:bg-wedding-gold selection:text-white">
@@ -159,11 +165,10 @@
     <div id="petals-container"></div>
 
     <!-- Elemento de Áudio (Invisível) -->
-    <!-- Substitua o 'src' pela URL da música real do casal -->
    <audio id="wedding-music" loop>
-  <source src="song.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
+      <source src="song.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
 
     <!-- Player Flutuante (Fixo) -->
     <div id="floating-player" class="fixed bottom-4 left-4 z-50 transform translate-y-20 opacity-0 transition-all duration-500">
@@ -199,7 +204,7 @@
                         <a href="#music" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Música</a>
                         <a href="#story" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">História</a>
                         <a href="#location" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Local</a>
-                        <a href="#tips" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Dicas</a>
+                        <a href="#gallery" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Galeria</a>
                         <a href="#gifts" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Presentes</a>
                         <a href="#rsvp" class="bg-wedding-gold text-white px-5 py-2 rounded-full text-[10px] xl:text-xs font-bold tracking-widest hover:bg-wedding-dark hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 uppercase ml-2">RSVP</a>
                     </div>
@@ -221,6 +226,7 @@
                 <a href="#music" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">A Nossa Música</a>
                 <a href="#story" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">História</a>
                 <a href="#location" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Local</a>
+                <a href="#gallery" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Galeria</a>
                 <a href="#gifts" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Presentes</a>
                 <a href="#rsvp" class="block px-3 py-3 text-wedding-gold font-bold uppercase tracking-widest border border-wedding-gold/20 rounded-full mt-4" onclick="toggleMenu()">Confirmar Presença</a>
             </div>
@@ -242,7 +248,7 @@
         </div>
     </section>
 
-    <!-- Contagem Regressiva -->
+    <!-- Contagem Regressiva & Add to Calendar -->
     <section id="countdown" class="py-20 bg-white border-b border-gray-100 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-32 h-32 bg-wedding-gold/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 right-0 w-32 h-32 bg-wedding-rose/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
@@ -269,6 +275,14 @@
                     <div class="w-8 h-px bg-wedding-gold mx-auto my-2"></div>
                     <span class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-400">Segundos</span>
                 </div>
+            </div>
+            
+            <!-- Botão Adicionar ao Calendário -->
+            <div class="mt-12 reveal delay-300">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Sarah+e+Daniel&dates=20261212T160000/20261212T235900&details=Celebração+do+nosso+casamento!&location=Capela+Nossa+Senhora+do+Amor,+Jardins" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-white border border-gray-200 rounded-full text-wedding-gold text-xs font-bold uppercase tracking-widest hover:bg-wedding-gold hover:text-white hover:border-wedding-gold transition-all duration-300 shadow-sm hover:shadow-lg">
+                    <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+                    Salvar na Agenda
+                </a>
             </div>
         </div>
     </section>
@@ -471,8 +485,51 @@
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: Dicas (Hospedagem e Salões) -->
-    <section id="tips" class="py-24 bg-white relative">
+    <!-- NOVA SEÇÃO: Galeria de Fotos (Masonry) -->
+    <section id="gallery" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+             <div class="text-center mb-20 reveal">
+                <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold block mb-2">Momentos</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-wedding-dark">Galeria de Fotos</h2>
+            </div>
+            
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 reveal delay-100 space-y-6">
+                <!-- Foto 1 -->
+                <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1511285560982-1351c4f88e5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casal" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+                 <!-- Foto 2 -->
+                 <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0202128?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casal" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+                 <!-- Foto 3 -->
+                 <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casal" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+                 <!-- Foto 4 -->
+                 <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1621621667797-e06afc217fb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casal" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+                 <!-- Foto 5 -->
+                 <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casal" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+                 <!-- Foto 6 -->
+                 <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-500 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Casal" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dicas (Hospedagem e Salões) -->
+    <section id="tips" class="py-24 bg-wedding-light relative">
         <div class="max-w-6xl mx-auto px-4">
              <div class="text-center mb-20 reveal">
                 <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold block mb-2">Para seu conforto</span>
@@ -481,7 +538,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal delay-100">
                 <!-- Dica Hotel -->
-                <div class="flex flex-col md:flex-row bg-wedding-light rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                <div class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hotel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
@@ -499,7 +556,7 @@
                 </div>
 
                  <!-- Dica Beleza -->
-                 <div class="flex flex-col md:flex-row bg-wedding-light rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+                 <div class="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
                     <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salão" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
@@ -608,7 +665,7 @@
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: FAQ (Dúvidas Frequentes) -->
+    <!-- FAQ (Dúvidas Frequentes) -->
     <section id="faq" class="py-24 bg-white">
          <div class="max-w-4xl mx-auto px-4">
              <div class="text-center mb-16 reveal">
@@ -659,7 +716,7 @@
          </div>
     </section>
 
-    <!-- RSVP Section (Atualizada com novos campos) -->
+    <!-- RSVP Section -->
     <section id="rsvp" class="py-32 bg-wedding-dark text-white text-center relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
         <div class="absolute top-0 right-0 w-64 h-64 bg-wedding-gold/10 rounded-full blur-3xl"></div>
@@ -706,7 +763,7 @@
                     </div>
                 </div>
                 
-                <!-- Linha 3: Novos Campos -->
+                <!-- Linha 3 -->
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div class="group relative">
                         <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Crianças (0 a 10 anos)</label>
@@ -836,8 +893,6 @@
         function stopPetals() {
             clearInterval(petalInterval);
             petalInterval = null;
-            // Opcional: Remover todas as pétalas existentes imediatamente
-            // document.getElementById('petals-container').innerHTML = '';
         }
 
         // --- FIM DA LÓGICA DE MÚSICA ---
@@ -845,24 +900,28 @@
         // Lógica do Accordion (FAQ)
         function toggleAccordion(button) {
             const content = button.nextElementSibling;
-            const icon = button.querySelector('i');
+            // Correção: Busca SVG ou I, pois o Lucide transforma o I em SVG
+            const icon = button.querySelector('svg') || button.querySelector('i');
             
             document.querySelectorAll('.accordion-content').forEach(el => {
                 if (el !== content) {
                     el.style.maxHeight = null;
                     el.classList.remove('active');
-                    el.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    // Correção aqui também para fechar os outros itens corretamente
+                    const otherButton = el.previousElementSibling;
+                    const otherIcon = otherButton.querySelector('svg') || otherButton.querySelector('i');
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
                 }
             });
 
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('active');
-                icon.style.transform = 'rotate(0deg)';
+                if (icon) icon.style.transform = 'rotate(0deg)';
             } else {
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('active');
-                icon.style.transform = 'rotate(180deg)';
+                if (icon) icon.style.transform = 'rotate(180deg)';
             }
         }
 
