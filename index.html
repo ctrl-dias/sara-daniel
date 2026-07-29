@@ -23,12 +23,12 @@
                 extend: {
                     colors: {
                         wedding: {
-                            gold: '#C5A086',
-                            rose: '#E6C6C6',
-                            dark: '#2C2C2C',
-                            light: '#F9F7F5',
-                            accent: '#8A7968',
-                            green: '#6B705C'
+                            primary: '#1B365D',   /* Azul Marinho Clássico (substitui o dourado/marrom) */
+                            secondary: '#94A3B8', /* Prata/Cinza azulado (substitui o rose) */
+                            dark: '#0F172A',      /* Slate 900 - Azul muito escuro para textos */
+                            light: '#F8FAFC',     /* Slate 50 - Fundo gelo/branco elegante */
+                            accent: '#475569',    /* Slate 600 - Para textos secundários */
+                            success: '#10B981'    /* Verde esmeralda para sucesso */
                         }
                     },
                     fontFamily: {
@@ -68,10 +68,10 @@
 
         /* Navbar Vidro */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.90);
+            background: rgba(248, 250, 252, 0.90);
             backdrop-filter: blur(12px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(27, 54, 93, 0.1);
         }
         
         /* Accordion Animation */
@@ -131,9 +131,9 @@
             background: white;
             width: 15px;
             height: 15px;
-            border-radius: 15px 0 15px 0; /* Formato de folha/pétala */
-            box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
-            z-index: 40; /* Atrás do navbar, na frente do conteúdo */
+            border-radius: 15px 0 15px 0;
+            box-shadow: 1px 1px 2px rgba(27,54,93,0.1);
+            z-index: 40;
             pointer-events: none;
         }
 
@@ -159,7 +159,7 @@
         }
     </style>
 </head>
-<body class="bg-wedding-light text-wedding-dark antialiased overflow-x-hidden selection:bg-wedding-gold selection:text-white">
+<body class="bg-wedding-light text-wedding-dark antialiased overflow-x-hidden selection:bg-wedding-primary selection:text-white">
 
     <!-- Container para Pétalas -->
     <div id="petals-container"></div>
@@ -172,19 +172,19 @@
 
     <!-- Player Flutuante (Fixo) -->
     <div id="floating-player" class="fixed bottom-4 left-4 z-50 transform translate-y-20 opacity-0 transition-all duration-500">
-        <div class="bg-white/80 backdrop-blur-md border border-wedding-gold/30 rounded-full shadow-xl p-2 pr-6 flex items-center gap-3">
-            <button onclick="toggleMusic()" class="w-10 h-10 bg-wedding-gold rounded-full flex items-center justify-center text-white hover:bg-wedding-accent transition-colors shadow-md">
+        <div class="bg-white/90 backdrop-blur-md border border-wedding-primary/20 rounded-full shadow-xl p-2 pr-6 flex items-center gap-3">
+            <button onclick="toggleMusic()" class="w-10 h-10 bg-wedding-primary rounded-full flex items-center justify-center text-white hover:bg-wedding-dark transition-colors shadow-md">
                 <i id="float-icon" data-lucide="play" class="w-4 h-4 ml-0.5"></i>
             </button>
             <div class="flex flex-col">
-                <span class="text-[10px] uppercase tracking-widest text-wedding-gold font-bold">Tocando Agora</span>
+                <span class="text-[10px] uppercase tracking-widest text-wedding-primary font-bold">Tocando Agora</span>
                 <span class="text-xs font-serif text-wedding-dark">Nossa Canção</span>
             </div>
             <!-- Equalizador Visual Mini -->
             <div class="flex items-end gap-1 h-4 ml-2">
-                <div class="bar w-1 bg-wedding-gold/50 rounded-full paused-bar"></div>
-                <div class="bar w-1 bg-wedding-gold/50 rounded-full paused-bar"></div>
-                <div class="bar w-1 bg-wedding-gold/50 rounded-full paused-bar"></div>
+                <div class="bar w-1 bg-wedding-primary/50 rounded-full paused-bar"></div>
+                <div class="bar w-1 bg-wedding-primary/50 rounded-full paused-bar"></div>
+                <div class="bar w-1 bg-wedding-primary/50 rounded-full paused-bar"></div>
             </div>
         </div>
     </div>
@@ -194,24 +194,24 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0 flex items-center group cursor-default">
-                    <span class="font-script text-3xl text-wedding-gold transition-transform duration-500 group-hover:scale-110">S & D</span>
+                    <span id="nav-logo" class="font-script text-3xl text-white transition-all duration-500 group-hover:scale-110">S & D</span>
                 </div>
                 
                 <div class="hidden lg:block">
                     <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#home" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Início</a>
-                        <a href="#couple" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Noivos</a>
-                        <a href="#music" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Música</a>
-                        <a href="#story" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">História</a>
-                        <a href="#location" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Local</a>
-                        <a href="#gallery" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Galeria</a>
-                        <a href="#gifts" class="nav-link text-wedding-dark hover:text-wedding-gold px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Presentes</a>
-                        <a href="#rsvp" class="bg-wedding-gold text-white px-5 py-2 rounded-full text-[10px] xl:text-xs font-bold tracking-widest hover:bg-wedding-dark hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 uppercase ml-2">RSVP</a>
+                        <a href="#home" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Início</a>
+                        <a href="#couple" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Noivos</a>
+                        <a href="#music" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Música</a>
+                        <a href="#story" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">História</a>
+                        <a href="#location" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Local</a>
+                        <a href="#gallery" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Galeria</a>
+                        <a href="#gifts" class="nav-link text-white/90 hover:text-wedding-primary px-2 py-2 text-[10px] xl:text-xs font-medium tracking-[0.2em] transition-all duration-300 uppercase relative group">Presentes</a>
+                        <a href="#rsvp" class="bg-wedding-primary text-white px-5 py-2 rounded-full text-[10px] xl:text-xs font-bold tracking-widest hover:bg-wedding-dark hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 uppercase ml-2">RSVP</a>
                     </div>
                 </div>
 
                 <div class="-mr-2 flex lg:hidden">
-                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-wedding-gold focus:outline-none transition-colors duration-300">
+                    <button type="button" id="mobile-menu-btn" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-wedding-primary focus:outline-none transition-colors duration-300">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -221,21 +221,23 @@
         <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-xl absolute w-full border-t border-gray-100 shadow-2xl transition-all duration-300 h-screen overflow-y-auto">
             <div class="px-4 pt-4 pb-20 space-y-2 text-center">
-                <a href="#home" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Início</a>
-                <a href="#couple" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Os Noivos</a>
-                <a href="#music" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">A Nossa Música</a>
-                <a href="#story" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">História</a>
-                <a href="#location" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Local</a>
-                <a href="#gallery" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Galeria</a>
-                <a href="#gifts" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-gold uppercase tracking-widest transition-colors" onclick="toggleMenu()">Presentes</a>
-                <a href="#rsvp" class="block px-3 py-3 text-wedding-gold font-bold uppercase tracking-widest border border-wedding-gold/20 rounded-full mt-4" onclick="toggleMenu()">Confirmar Presença</a>
+                <a href="#home" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">Início</a>
+                <a href="#couple" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">Os Noivos</a>
+                <a href="#music" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">A Nossa Música</a>
+                <a href="#story" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">História</a>
+                <a href="#location" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">Local</a>
+                <a href="#gallery" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">Galeria</a>
+                <a href="#gifts" class="block px-3 py-3 rounded-md text-sm hover:bg-wedding-light hover:text-wedding-primary uppercase tracking-widest transition-colors" onclick="toggleMenu()">Presentes</a>
+                <a href="#rsvp" class="block px-3 py-3 text-wedding-primary font-bold uppercase tracking-widest border border-wedding-primary/20 rounded-full mt-4" onclick="toggleMenu()">Confirmar Presença</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center text-center parallax" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent"></div>
+    <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden parallax" style="background-image: url('WhatsApp%20Image%202026-07-21%20at%2019.53.47.jpeg');">
+        <!-- Camada de overlay escura base -->
+        <div class="absolute inset-0 bg-black/40"></div>
+        
         <div class="relative z-10 px-4 reveal active">
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">Vamos nos Casar</p>
             <h1 class="font-script text-7xl md:text-9xl text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards]">Sarah & Daniel</h1>
@@ -250,36 +252,36 @@
 
     <!-- Contagem Regressiva & Add to Calendar -->
     <section id="countdown" class="py-20 bg-white border-b border-gray-100 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-32 h-32 bg-wedding-gold/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-32 h-32 bg-wedding-rose/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        <div class="absolute top-0 left-0 w-32 h-32 bg-wedding-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-32 h-32 bg-wedding-secondary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
         
         <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 reveal">
                 <div class="p-6 transition-transform hover:scale-105 duration-300">
                     <span id="days" class="block text-4xl md:text-6xl font-serif text-wedding-dark font-thin">00</span>
-                    <div class="w-8 h-px bg-wedding-gold mx-auto my-2"></div>
+                    <div class="w-8 h-px bg-wedding-primary mx-auto my-2"></div>
                     <span class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-400">Dias</span>
                 </div>
                 <div class="p-6 transition-transform hover:scale-105 duration-300 delay-100">
                     <span id="hours" class="block text-4xl md:text-6xl font-serif text-wedding-dark font-thin">00</span>
-                    <div class="w-8 h-px bg-wedding-gold mx-auto my-2"></div>
+                    <div class="w-8 h-px bg-wedding-primary mx-auto my-2"></div>
                     <span class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-400">Horas</span>
                 </div>
                 <div class="p-6 transition-transform hover:scale-105 duration-300 delay-200">
                     <span id="minutes" class="block text-4xl md:text-6xl font-serif text-wedding-dark font-thin">00</span>
-                    <div class="w-8 h-px bg-wedding-gold mx-auto my-2"></div>
+                    <div class="w-8 h-px bg-wedding-primary mx-auto my-2"></div>
                     <span class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-400">Minutos</span>
                 </div>
                 <div class="p-6 transition-transform hover:scale-105 duration-300 delay-300">
                     <span id="seconds" class="block text-4xl md:text-6xl font-serif text-wedding-dark font-thin">00</span>
-                    <div class="w-8 h-px bg-wedding-gold mx-auto my-2"></div>
+                    <div class="w-8 h-px bg-wedding-primary mx-auto my-2"></div>
                     <span class="text-[10px] md:text-xs uppercase tracking-[0.3em] text-gray-400">Segundos</span>
                 </div>
             </div>
             
             <!-- Botão Adicionar ao Calendário -->
             <div class="mt-12 reveal delay-300">
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Sarah+e+Daniel&dates=20261212T160000/20261212T235900&details=Celebração+do+nosso+casamento!&location=Capela+Nossa+Senhora+do+Amor,+Jardins" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-white border border-gray-200 rounded-full text-wedding-gold text-xs font-bold uppercase tracking-widest hover:bg-wedding-gold hover:text-white hover:border-wedding-gold transition-all duration-300 shadow-sm hover:shadow-lg">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Sarah+e+Daniel&dates=20261212T160000/20261212T235900&details=Celebração+do+nosso+casamento!&location=Capela+Nossa+Senhora+do+Amor,+Jardins" target="_blank" class="inline-flex items-center gap-2 px-8 py-3 bg-white border border-gray-200 rounded-full text-wedding-primary text-xs font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white hover:border-wedding-primary transition-all duration-300 shadow-sm hover:shadow-lg">
                     <i data-lucide="calendar-plus" class="w-4 h-4"></i>
                     Salvar na Agenda
                 </a>
@@ -299,13 +301,13 @@
                 <!-- Noiva -->
                 <div class="text-center group reveal delay-100">
                     <div class="relative w-72 h-72 mx-auto mb-10">
-                        <div class="absolute inset-0 rounded-full border border-wedding-gold/30 scale-110 group-hover:scale-125 transition-transform duration-700 ease-out"></div>
-                        <div class="absolute inset-0 rounded-full border border-wedding-gold/20 scale-125 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+                        <div class="absolute inset-0 rounded-full border border-wedding-primary/30 scale-110 group-hover:scale-125 transition-transform duration-700 ease-out"></div>
+                        <div class="absolute inset-0 rounded-full border border-wedding-primary/20 scale-125 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
                         <div class="w-full h-full overflow-hidden rounded-full border-4 border-white shadow-2xl relative z-10">
                             <img src="https://images.unsplash.com/photo-1574871786514-46e1680ea587?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                         </div>
                     </div>
-                    <h3 class="font-script text-5xl text-wedding-gold mb-3">Sarah</h3>
+                    <h3 class="font-script text-5xl text-wedding-primary mb-3">Sarah</h3>
                     <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-6">A Noiva</p>
                     <p class="font-sans font-light text-gray-600 leading-relaxed text-sm px-4 max-w-sm mx-auto">
                         Arquiteta e sonhadora. Ama o cheiro de chuva e a tranquilidade de um domingo de manhã. Encontrou no Daniel seu porto seguro.
@@ -315,13 +317,13 @@
                 <!-- Noivo -->
                 <div class="text-center group reveal delay-200">
                     <div class="relative w-72 h-72 mx-auto mb-10">
-                        <div class="absolute inset-0 rounded-full border border-wedding-gold/30 scale-110 group-hover:scale-125 transition-transform duration-700 ease-out"></div>
-                        <div class="absolute inset-0 rounded-full border border-wedding-gold/20 scale-125 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
+                        <div class="absolute inset-0 rounded-full border border-wedding-primary/30 scale-110 group-hover:scale-125 transition-transform duration-700 ease-out"></div>
+                        <div class="absolute inset-0 rounded-full border border-wedding-primary/20 scale-125 group-hover:scale-150 transition-transform duration-700 ease-out"></div>
                         <div class="w-full h-full overflow-hidden rounded-full border-4 border-white shadow-2xl relative z-10">
                             <img src="https://images.unsplash.com/photo-1606216769783-a7dbe227a17f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                         </div>
                     </div>
-                    <h3 class="font-script text-5xl text-wedding-gold mb-3">Daniel</h3>
+                    <h3 class="font-script text-5xl text-wedding-primary mb-3">Daniel</h3>
                     <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-6">O Noivo</p>
                     <p class="font-sans font-light text-gray-600 leading-relaxed text-sm px-4 max-w-sm mx-auto">
                         Engenheiro e prático. Adora música antiga e viajar sem destino. Viu na Sarah a parceira perfeita para todas as jornadas.
@@ -334,7 +336,7 @@
     <!-- NOVA SEÇÃO: A Nossa Música -->
     <section id="music" class="py-24 bg-white relative overflow-hidden">
         <!-- Elemento de Fundo Decorativo -->
-        <div class="absolute right-0 top-0 w-96 h-96 bg-wedding-gold/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute right-0 top-0 w-96 h-96 bg-wedding-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
         
         <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10 reveal">
             <!-- Capa do "Disco" -->
@@ -342,14 +344,14 @@
                 <div class="relative w-64 h-64 md:w-80 md:h-80 group cursor-pointer" onclick="toggleMusic()">
                     <!-- Disco -->
                     <div id="vinyl" class="absolute inset-0 rounded-full bg-black shadow-2xl border-4 border-gray-900 flex items-center justify-center paused-spin">
-                        <!-- Ranhuras do vinil (efeito visual) -->
+                        <!-- Ranhuras do vinil -->
                         <div class="absolute inset-2 rounded-full border border-gray-800 opacity-50"></div>
                         <div class="absolute inset-4 rounded-full border border-gray-800 opacity-50"></div>
                         <div class="absolute inset-8 rounded-full border border-gray-800 opacity-50"></div>
                         <div class="absolute inset-12 rounded-full border border-gray-800 opacity-50"></div>
                         
                         <!-- Rótulo do centro -->
-                        <div class="w-28 h-28 bg-wedding-gold rounded-full flex items-center justify-center border-4 border-black relative overflow-hidden">
+                        <div class="w-28 h-28 bg-wedding-primary rounded-full flex items-center justify-center border-4 border-black relative overflow-hidden">
                             <div class="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent"></div>
                             <span class="font-script text-white text-xl relative z-10">S & D</span>
                         </div>
@@ -358,7 +360,7 @@
                     <!-- Botão Play Central (Overlay) -->
                     <div id="play-overlay" class="absolute inset-0 flex items-center justify-center bg-black/20 rounded-full opacity-100 group-hover:bg-black/30 transition-all duration-300">
                         <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transform transition-transform group-hover:scale-110">
-                            <i data-lucide="play" class="w-6 h-6 text-wedding-gold ml-1"></i>
+                            <i data-lucide="play" class="w-6 h-6 text-wedding-primary ml-1"></i>
                         </div>
                     </div>
                 </div>
@@ -366,7 +368,7 @@
 
             <!-- Texto e Controles -->
             <div class="w-full md:w-1/2 text-center md:text-left">
-                <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold block mb-2">Trilha Sonora</span>
+                <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Trilha Sonora</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-wedding-dark mb-6">A Nossa Música</h2>
                 <p class="text-gray-600 font-light text-sm leading-relaxed mb-8">
                     Esta canção marcou o nosso primeiro encontro e nos acompanhou em todos os momentos especiais. Clique no disco ao lado para ouvir e sentir um pouco da nossa história.
@@ -376,7 +378,7 @@
                     <p class="text-xs text-gray-500 uppercase tracking-widest">Cover Instrumental</p>
                 </div>
                 <div class="mt-8">
-                     <button onclick="toggleMusic()" class="px-8 py-3 border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full flex items-center justify-center gap-2 mx-auto md:mx-0">
+                     <button onclick="toggleMusic()" class="px-8 py-3 border border-wedding-primary text-wedding-primary hover:bg-wedding-primary hover:text-white transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full flex items-center justify-center gap-2 mx-auto md:mx-0">
                         <i data-lucide="music" class="w-4 h-4"></i>
                         Ouvir Agora
                     </button>
@@ -389,32 +391,32 @@
     <section id="story" class="py-32 bg-wedding-light relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 relative z-10">
             <div class="text-center mb-24 reveal">
-                <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold">Timeline</span>
+                <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold">Timeline</span>
                 <h2 class="font-serif text-5xl text-wedding-dark mt-3">Nossa História</h2>
             </div>
 
             <div class="relative">
                 <!-- Linha Central -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-transparent via-wedding-gold/40 to-transparent"></div>
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-transparent via-wedding-primary/30 to-transparent"></div>
 
                 <!-- Evento 1 -->
                 <div class="relative flex items-center justify-between mb-24 w-full reveal delay-100 group">
                     <div class="w-5/12 text-right pr-12 order-1">
-                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-gold">O Primeiro Olhar</h3>
-                        <span class="text-wedding-gold text-xs uppercase tracking-widest font-bold">Junho, 2018</span>
+                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Primeiro Olhar</h3>
+                        <span class="text-wedding-primary text-xs uppercase tracking-widest font-bold">Junho, 2018</span>
                         <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">Nos conhecemos em uma festa de amigos em comum. Foi um encontro casual que mudou tudo.</p>
                     </div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-gold shadow-[0_0_0_4px_rgba(197,160,134,0.2)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-gold"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-primary shadow-[0_0_0_4px_rgba(27,54,93,0.15)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-primary"></div>
                     <div class="w-5/12 pl-12 order-3"></div>
                 </div>
 
                 <!-- Evento 2 -->
                 <div class="relative flex items-center justify-between mb-24 w-full reveal delay-200 group">
                     <div class="w-5/12 pr-12 order-1"></div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-gold shadow-[0_0_0_4px_rgba(197,160,134,0.2)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-gold"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-primary shadow-[0_0_0_4px_rgba(27,54,93,0.15)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-primary"></div>
                     <div class="w-5/12 text-left pl-12 order-3">
-                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-gold">O Primeiro Beijo</h3>
-                        <span class="text-wedding-gold text-xs uppercase tracking-widest font-bold">Agosto, 2018</span>
+                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Primeiro Beijo</h3>
+                        <span class="text-wedding-primary text-xs uppercase tracking-widest font-bold">Agosto, 2018</span>
                         <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">Depois de muitos cafés e conversas, finalmente aconteceu nosso primeiro beijo sob a chuva.</p>
                     </div>
                 </div>
@@ -422,11 +424,11 @@
                 <!-- Evento 3 -->
                 <div class="relative flex items-center justify-between w-full reveal delay-300 group">
                     <div class="w-5/12 text-right pr-12 order-1">
-                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-gold">O Pedido</h3>
-                        <span class="text-wedding-gold text-xs uppercase tracking-widest font-bold">Dezembro, 2024</span>
+                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Pedido</h3>
+                        <span class="text-wedding-primary text-xs uppercase tracking-widest font-bold">Dezembro, 2024</span>
                         <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">Em uma viagem inesquecível para a Itália, ele ajoelhou e fez a pergunta mais importante.</p>
                     </div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-gold shadow-[0_0_0_4px_rgba(197,160,134,0.2)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-gold"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-primary shadow-[0_0_0_4px_rgba(27,54,93,0.15)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-primary"></div>
                     <div class="w-5/12 pl-12 order-3"></div>
                 </div>
             </div>
@@ -452,32 +454,32 @@
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="text-center mb-24 reveal">
                 <h2 class="font-serif text-5xl md:text-6xl text-wedding-dark">Cerimônia & Recepção</h2>
-                <div class="w-16 h-px bg-wedding-gold mx-auto mt-6"></div>
+                <div class="w-16 h-px bg-wedding-primary mx-auto mt-6"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <!-- Card Cerimônia -->
-                <div class="bg-white p-12 rounded-lg shadow-sm text-center border-t-2 border-wedding-gold hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal delay-100 group">
-                    <div class="w-16 h-16 bg-wedding-light rounded-full flex items-center justify-center mx-auto mb-8 text-wedding-gold group-hover:bg-wedding-gold group-hover:text-white transition-colors duration-300">
+                <div class="bg-white p-12 rounded-lg shadow-sm text-center border-t-2 border-wedding-primary hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal delay-100 group">
+                    <div class="w-16 h-16 bg-wedding-light rounded-full flex items-center justify-center mx-auto mb-8 text-wedding-primary group-hover:bg-wedding-primary group-hover:text-white transition-colors duration-300">
                         <i data-lucide="church" class="w-8 h-8"></i>
                     </div>
                     <h3 class="font-serif text-3xl mb-3 text-wedding-dark">A Cerimônia</h3>
                     <p class="text-wedding-accent font-bold text-xs tracking-[0.2em] uppercase mb-6">16:00 Horas</p>
                     <p class="text-gray-600 mb-8 font-light leading-relaxed">Capela Nossa Senhora do Amor<br>Rua das Flores, 123 - Jardins</p>
-                    <a href="https://maps.google.com" target="_blank" class="inline-block px-8 py-3 border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm">
+                    <a href="https://maps.google.com" target="_blank" class="inline-block px-8 py-3 border border-wedding-primary text-wedding-primary hover:bg-wedding-primary hover:text-white transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm">
                         Ver no Mapa
                     </a>
                 </div>
 
                 <!-- Card Recepção -->
-                <div class="bg-white p-12 rounded-lg shadow-sm text-center border-t-2 border-wedding-gold hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal delay-200 group">
-                    <div class="w-16 h-16 bg-wedding-light rounded-full flex items-center justify-center mx-auto mb-8 text-wedding-gold group-hover:bg-wedding-gold group-hover:text-white transition-colors duration-300">
+                <div class="bg-white p-12 rounded-lg shadow-sm text-center border-t-2 border-wedding-primary hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal delay-200 group">
+                    <div class="w-16 h-16 bg-wedding-light rounded-full flex items-center justify-center mx-auto mb-8 text-wedding-primary group-hover:bg-wedding-primary group-hover:text-white transition-colors duration-300">
                         <i data-lucide="wine" class="w-8 h-8"></i>
                     </div>
                     <h3 class="font-serif text-3xl mb-3 text-wedding-dark">A Festa</h3>
                     <p class="text-wedding-accent font-bold text-xs tracking-[0.2em] uppercase mb-6">18:00 Horas</p>
                     <p class="text-gray-600 mb-8 font-light leading-relaxed">Espaço Villa Garden<br>Av. Principal, 500 - Alto da Colina</p>
-                    <a href="https://maps.google.com" target="_blank" class="inline-block px-8 py-3 border border-wedding-gold text-wedding-gold hover:bg-wedding-gold hover:text-white transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm">
+                    <a href="https://maps.google.com" target="_blank" class="inline-block px-8 py-3 border border-wedding-primary text-wedding-primary hover:bg-wedding-primary hover:text-white transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm">
                         Ver no Mapa
                     </a>
                 </div>
@@ -485,11 +487,11 @@
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: Galeria de Fotos (Masonry) -->
+    <!-- Galeria de Fotos (Masonry) -->
     <section id="gallery" class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4">
              <div class="text-center mb-20 reveal">
-                <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold block mb-2">Momentos</span>
+                <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Momentos</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-wedding-dark">Galeria de Fotos</h2>
             </div>
             
@@ -532,7 +534,7 @@
     <section id="tips" class="py-24 bg-wedding-light relative">
         <div class="max-w-6xl mx-auto px-4">
              <div class="text-center mb-20 reveal">
-                <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold block mb-2">Para seu conforto</span>
+                <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Para seu conforto</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-wedding-dark">Dicas & Recomendações</h2>
             </div>
             
@@ -543,7 +545,7 @@
                         <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hotel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="w-full md:w-3/5 p-8 flex flex-col justify-center">
-                        <div class="flex items-center gap-2 mb-2 text-wedding-gold">
+                        <div class="flex items-center gap-2 mb-2 text-wedding-primary">
                              <i data-lucide="bed-double" class="w-5 h-5"></i>
                              <span class="text-xs uppercase tracking-widest font-bold">Hospedagem</span>
                         </div>
@@ -551,7 +553,7 @@
                         <p class="text-gray-600 font-light text-sm mb-4 leading-relaxed">
                             Conseguimos uma tarifa especial para nossos convidados. Utilize o cupom <strong class="text-wedding-accent">MARIANA26</strong>.
                         </p>
-                        <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-wedding-dark border-b border-wedding-gold w-max pb-1 hover:text-wedding-gold transition-colors">Reservar Agora</a>
+                        <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-wedding-dark border-b border-wedding-primary w-max pb-1 hover:text-wedding-primary transition-colors">Reservar Agora</a>
                     </div>
                 </div>
 
@@ -561,7 +563,7 @@
                         <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salão" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                     <div class="w-full md:w-3/5 p-8 flex flex-col justify-center">
-                         <div class="flex items-center gap-2 mb-2 text-wedding-gold">
+                         <div class="flex items-center gap-2 mb-2 text-wedding-primary">
                              <i data-lucide="scissors" class="w-5 h-5"></i>
                              <span class="text-xs uppercase tracking-widest font-bold">Beleza</span>
                         </div>
@@ -569,7 +571,7 @@
                         <p class="text-gray-600 font-light text-sm mb-4 leading-relaxed">
                             Especialistas em maquiagem e penteados para festas. Recomendamos agendar com 1 mês de antecedência.
                         </p>
-                        <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-wedding-dark border-b border-wedding-gold w-max pb-1 hover:text-wedding-gold transition-colors">Ver Instagram</a>
+                        <a href="#" class="text-[10px] uppercase tracking-widest font-bold text-wedding-dark border-b border-wedding-primary w-max pb-1 hover:text-wedding-primary transition-colors">Ver Instagram</a>
                     </div>
                 </div>
             </div>
@@ -580,7 +582,7 @@
     <section id="gifts" class="py-32 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-24 reveal">
-                <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold">Lua de Mel</span>
+                <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold">Lua de Mel</span>
                 <h2 class="font-serif text-5xl md:text-6xl text-wedding-dark mt-3">Lista de Presentes</h2>
                 <p class="mt-6 text-gray-500 font-light max-w-2xl mx-auto text-sm leading-relaxed">
                     Caso queira nos presentear, optamos por uma lista virtual de experiências.
@@ -597,7 +599,7 @@
                     <div class="p-8 text-center relative z-20 bg-white">
                         <h4 class="font-serif text-2xl mb-2 text-wedding-dark">Jantar Romântico</h4>
                         <p class="text-wedding-accent font-bold mb-6 text-sm">R$ 200,00</p>
-                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-gold hover:text-white hover:border-wedding-gold transition-all duration-300">Presentear</button>
+                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white hover:border-wedding-primary transition-all duration-300">Presentear</button>
                     </div>
                 </div>
 
@@ -610,7 +612,7 @@
                     <div class="p-8 text-center relative z-20 bg-white">
                         <h4 class="font-serif text-2xl mb-2 text-wedding-dark">Spa Day</h4>
                         <p class="text-wedding-accent font-bold mb-6 text-sm">R$ 350,00</p>
-                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-gold hover:text-white hover:border-wedding-gold transition-all duration-300">Presentear</button>
+                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white hover:border-wedding-primary transition-all duration-300">Presentear</button>
                     </div>
                 </div>
 
@@ -623,7 +625,7 @@
                     <div class="p-8 text-center relative z-20 bg-white">
                         <h4 class="font-serif text-2xl mb-2 text-wedding-dark">Passeio de Barco</h4>
                         <p class="text-wedding-accent font-bold mb-6 text-sm">R$ 500,00</p>
-                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-gold hover:text-white hover:border-wedding-gold transition-all duration-300">Presentear</button>
+                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white hover:border-wedding-primary transition-all duration-300">Presentear</button>
                     </div>
                 </div>
 
@@ -636,7 +638,7 @@
                     <div class="p-8 text-center relative z-20 bg-white">
                         <h4 class="font-serif text-2xl mb-2 text-wedding-dark">Cota Livre</h4>
                         <p class="text-wedding-accent font-bold mb-6 text-sm">Qualquer Valor</p>
-                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-gold hover:text-white hover:border-wedding-gold transition-all duration-300">Presentear</button>
+                        <button onclick="copiarPix()" class="w-full bg-transparent border border-gray-300 text-gray-500 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-primary hover:text-white hover:border-wedding-primary transition-all duration-300">Presentear</button>
                     </div>
                 </div>
             </div>
@@ -650,15 +652,18 @@
             <p class="font-sans text-gray-600 mb-16 font-light">Inspirações para o grande dia</p>
             <div class="flex flex-wrap justify-center gap-12">
                 <div class="flex flex-col items-center group cursor-pointer">
-                    <div class="w-24 h-24 rounded-full bg-[#E6C6C6] shadow-lg mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"></div>
+                    <!-- Nova cor: Azul Marinho -->
+                    <div class="w-24 h-24 rounded-full bg-[#1B365D] shadow-lg mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"></div>
                     <span class="text-xs uppercase tracking-widest text-gray-500">Madrinhas</span>
                 </div>
                 <div class="flex flex-col items-center group cursor-pointer">
-                    <div class="w-24 h-24 rounded-full bg-[#2C2C2C] shadow-lg mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"></div>
+                    <!-- Nova cor: Slate Dark -->
+                    <div class="w-24 h-24 rounded-full bg-[#0F172A] shadow-lg mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"></div>
                     <span class="text-xs uppercase tracking-widest text-gray-500">Padrinhos</span>
                 </div>
                 <div class="flex flex-col items-center group cursor-pointer">
-                    <div class="w-24 h-24 rounded-full bg-[#F5F5F5] shadow-lg border border-gray-200 mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"></div>
+                    <!-- Nova cor: Cinza Prateado claro -->
+                    <div class="w-24 h-24 rounded-full bg-[#E2E8F0] shadow-lg border border-gray-200 mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"></div>
                     <span class="text-xs uppercase tracking-widest text-gray-500">Convidados</span>
                 </div>
             </div>
@@ -669,7 +674,7 @@
     <section id="faq" class="py-24 bg-white">
          <div class="max-w-4xl mx-auto px-4">
              <div class="text-center mb-16 reveal">
-                 <span class="text-wedding-gold uppercase tracking-[0.2em] text-xs font-bold block mb-2">Informações Importantes</span>
+                 <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Informações Importantes</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-wedding-dark">Dúvidas Frequentes</h2>
             </div>
             
@@ -678,7 +683,7 @@
                 <div class="border border-gray-100 rounded-lg overflow-hidden">
                     <button class="w-full text-left p-6 bg-wedding-light hover:bg-gray-50 flex justify-between items-center transition-colors" onclick="toggleAccordion(this)">
                         <span class="font-serif text-lg text-wedding-dark">Haverá estacionamento no local?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-wedding-gold transform transition-transform duration-300"></i>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-wedding-primary transform transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-white">
                         <div class="p-6 text-gray-600 font-light text-sm leading-relaxed border-t border-gray-100">
@@ -691,7 +696,7 @@
                 <div class="border border-gray-100 rounded-lg overflow-hidden">
                     <button class="w-full text-left p-6 bg-wedding-light hover:bg-gray-50 flex justify-between items-center transition-colors" onclick="toggleAccordion(this)">
                         <span class="font-serif text-lg text-wedding-dark">É necessário confirmar presença até quando?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-wedding-gold transform transition-transform duration-300"></i>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-wedding-primary transform transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-white">
                         <div class="p-6 text-gray-600 font-light text-sm leading-relaxed border-t border-gray-100">
@@ -704,7 +709,7 @@
                  <div class="border border-gray-100 rounded-lg overflow-hidden">
                     <button class="w-full text-left p-6 bg-wedding-light hover:bg-gray-50 flex justify-between items-center transition-colors" onclick="toggleAccordion(this)">
                         <span class="font-serif text-lg text-wedding-dark">Qual o traje recomendado?</span>
-                        <i data-lucide="chevron-down" class="w-5 h-5 text-wedding-gold transform transition-transform duration-300"></i>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-wedding-primary transform transition-transform duration-300"></i>
                     </button>
                     <div class="accordion-content bg-white">
                         <div class="p-6 text-gray-600 font-light text-sm leading-relaxed border-t border-gray-100">
@@ -719,11 +724,11 @@
     <!-- RSVP Section -->
     <section id="rsvp" class="py-32 bg-wedding-dark text-white text-center relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-wedding-gold/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-wedding-rose/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-wedding-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-wedding-secondary/10 rounded-full blur-3xl"></div>
 
         <div class="max-w-4xl mx-auto px-4 relative z-10 reveal">
-            <i data-lucide="mail-open" class="w-12 h-12 mx-auto mb-8 text-wedding-gold animate-bounce"></i>
+            <i data-lucide="mail-open" class="w-12 h-12 mx-auto mb-8 text-wedding-primary animate-bounce"></i>
             <h2 class="font-serif text-5xl md:text-6xl mb-6">Confirme sua Presença</h2>
             <p class="font-sans text-gray-400 mb-12 text-sm tracking-widest uppercase">
                 Por favor, preencha os detalhes abaixo até 20 de Novembro de 2026.
@@ -733,63 +738,63 @@
                 <!-- Linha 1 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="group relative">
-                        <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Nome Completo</label>
-                        <input type="text" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="Ex: João da Silva">
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                        <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">Nome Completo</label>
+                        <input type="text" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="Ex: João da Silva">
+                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                     </div>
                     <div class="group relative">
-                        <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">E-mail</label>
-                        <input type="email" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="seu@email.com">
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                        <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">E-mail</label>
+                        <input type="email" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="seu@email.com">
+                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                     </div>
                 </div>
 
                 <!-- Linha 2 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div class="group relative">
-                        <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Telefone (WhatsApp)</label>
-                        <input type="tel" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="(00) 00000-0000">
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                        <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">Telefone (WhatsApp)</label>
+                        <input type="tel" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="(00) 00000-0000">
+                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                     </div>
                      <div class="group relative">
-                        <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Total de Adultos (incluindo você)</label>
-                        <select class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-gray-300 transition-colors">
+                        <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">Total de Adultos (incluindo você)</label>
+                        <select class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-gray-300 transition-colors">
                             <option value="1" class="text-black">1 Pessoa</option>
                             <option value="2" class="text-black">2 Pessoas</option>
                             <option value="3" class="text-black">3 Pessoas</option>
                             <option value="4" class="text-black">4 Pessoas</option>
                         </select>
-                         <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                         <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                     </div>
                 </div>
                 
                 <!-- Linha 3 -->
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div class="group relative">
-                        <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Crianças (0 a 10 anos)</label>
-                        <select class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-gray-300 transition-colors">
+                        <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">Crianças (0 a 10 anos)</label>
+                        <select class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-gray-300 transition-colors">
                             <option value="0" class="text-black">Nenhuma</option>
                             <option value="1" class="text-black">1 Criança</option>
                             <option value="2" class="text-black">2 Crianças</option>
                         </select>
-                         <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                         <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                     </div>
                      <div class="group relative">
-                        <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Música que não pode faltar</label>
-                        <input type="text" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="Ex: Evidências">
-                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                        <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">Música que não pode faltar</label>
+                        <input type="text" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent" placeholder="Ex: Evidências">
+                        <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                     </div>
                 </div>
 
                 <!-- Área de Texto -->
                 <div class="group relative">
-                    <label class="block text-[10px] font-bold text-wedding-gold mb-2 uppercase tracking-widest">Restrições Alimentares / Mensagem aos Noivos</label>
-                    <textarea rows="3" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-gold outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent resize-none" placeholder="Ex: Sou alérgico a camarão. Parabéns ao casal!"></textarea>
-                    <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-gold transition-all duration-300 group-focus-within:w-full"></span>
+                    <label class="block text-[10px] font-bold text-wedding-primary mb-2 uppercase tracking-widest">Restrições Alimentares / Mensagem aos Noivos</label>
+                    <textarea rows="3" class="w-full bg-transparent border-b border-gray-600 focus:border-wedding-primary outline-none py-3 text-white transition-colors placeholder-gray-600 focus:placeholder-transparent resize-none" placeholder="Ex: Sou alérgico a camarão. Parabéns ao casal!"></textarea>
+                    <span class="absolute bottom-0 left-0 w-0 h-px bg-wedding-primary transition-all duration-300 group-focus-within:w-full"></span>
                 </div>
 
                 <div class="pt-10 text-center">
-                    <button type="button" class="w-full md:w-auto px-16 py-4 bg-gradient-to-r from-wedding-gold to-wedding-accent text-white rounded-full hover:shadow-[0_0_20px_rgba(197,160,134,0.5)] transition-all duration-300 font-bold tracking-widest shadow-lg uppercase text-xs transform hover:scale-105 active:scale-95">
+                    <button type="button" class="w-full md:w-auto px-16 py-4 bg-gradient-to-r from-wedding-primary to-wedding-accent text-white rounded-full hover:shadow-[0_0_20px_rgba(27,54,93,0.5)] transition-all duration-300 font-bold tracking-widest shadow-lg uppercase text-xs transform hover:scale-105 active:scale-95">
                         Enviar Confirmação
                     </button>
                 </div>
@@ -800,11 +805,11 @@
     <!-- Footer -->
     <footer class="bg-black text-white py-20 border-t border-gray-900 relative">
         <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
-            <h2 class="font-script text-7xl text-wedding-gold mb-10 opacity-80 hover:opacity-100 transition-opacity duration-500 cursor-default">Sarah & Daniel</h2>
+            <h2 class="font-script text-7xl text-wedding-primary mb-10 opacity-80 hover:opacity-100 transition-opacity duration-500 cursor-default">Sarah & Daniel</h2>
             <div class="flex justify-center space-x-10 mb-12 text-gray-500">
-                <a href="#" class="hover:text-wedding-gold transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                <a href="#" class="hover:text-wedding-gold transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-                <a href="#" class="hover:text-wedding-gold transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="map-pin" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-wedding-primary transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-wedding-primary transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-wedding-primary transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="map-pin" class="w-6 h-6"></i></a>
             </div>
             <div class="w-12 h-px bg-gray-800 mx-auto mb-8"></div>
             <p class="font-sans text-[10px] text-gray-600 tracking-[0.4em] uppercase hover:text-gray-400 transition-colors">
@@ -814,8 +819,8 @@
     </footer>
 
     <!-- Toast de Confirmação (PIX) -->
-    <div id="toast" class="fixed bottom-8 right-8 bg-wedding-green text-white px-8 py-4 rounded-lg shadow-2xl transform translate-y-32 opacity-0 transition-all duration-500 z-50 flex items-center gap-4 border-l-4 border-wedding-gold">
-        <i data-lucide="check-circle" class="w-6 h-6 text-wedding-gold"></i>
+    <div id="toast" class="fixed bottom-8 right-8 bg-wedding-success text-white px-8 py-4 rounded-lg shadow-2xl transform translate-y-32 opacity-0 transition-all duration-500 z-50 flex items-center gap-4 border-l-4 border-wedding-primary">
+        <i data-lucide="check-circle" class="w-6 h-6 text-wedding-primary"></i>
         <div>
             <h4 class="font-bold text-sm">Sucesso!</h4>
             <span class="text-xs text-gray-200">Chave PIX copiada.</span>
@@ -900,14 +905,12 @@
         // Lógica do Accordion (FAQ)
         function toggleAccordion(button) {
             const content = button.nextElementSibling;
-            // Correção: Busca SVG ou I, pois o Lucide transforma o I em SVG
             const icon = button.querySelector('svg') || button.querySelector('i');
             
             document.querySelectorAll('.accordion-content').forEach(el => {
                 if (el !== content) {
                     el.style.maxHeight = null;
                     el.classList.remove('active');
-                    // Correção aqui também para fechar os outros itens corretamente
                     const otherButton = el.previousElementSibling;
                     const otherIcon = otherButton.querySelector('svg') || otherButton.querySelector('i');
                     if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
@@ -933,15 +936,50 @@
             }, 3000);
         }
 
-        // Navbar Vidro Scroll Effect
+        // Evento de Scroll Global (Navbar e Desfoque do Hero)
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navLogo = document.getElementById('nav-logo');
+            
+            // --- Efeito Navbar Vidro ---
             if (window.scrollY > 50) {
                 navbar.classList.add('glass-nav', 'py-3');
                 navbar.classList.remove('bg-transparent', 'py-6');
+                
+                if (navLogo) {
+                    navLogo.classList.remove('text-white');
+                    navLogo.classList.add('text-wedding-primary');
+                }
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/90');
+                    link.classList.add('text-wedding-dark');
+                });
+                
+                if(mobileMenuBtn) {
+                    mobileMenuBtn.classList.remove('text-white');
+                    mobileMenuBtn.classList.add('text-gray-700');
+                }
             } else {
                 navbar.classList.remove('glass-nav', 'py-3');
                 navbar.classList.add('bg-transparent', 'py-6');
+                
+                if (navLogo) {
+                    navLogo.classList.remove('text-wedding-primary');
+                    navLogo.classList.add('text-white');
+                }
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-wedding-dark');
+                    link.classList.add('text-white/90');
+                });
+                
+                if(mobileMenuBtn) {
+                    mobileMenuBtn.classList.remove('text-gray-700');
+                    mobileMenuBtn.classList.add('text-white');
+                }
             }
         });
 
