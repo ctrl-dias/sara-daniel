@@ -34,7 +34,8 @@
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
                         serif: ['Cormorant Garamond', 'serif'],
-                        script: ['Great Vibes', 'cursive'],
+                        /* Atualizado para usar a Bickham como fonte script padrão do Tailwind */
+                        script: ['"Bickham Script Pro"', 'Great Vibes', 'cursive'],
                     }
                 }
             }
@@ -42,6 +43,15 @@
     </script>
 
     <style>
+        /* Importando a fonte local (arquivo na mesma pasta) */
+        @font-face {
+            font-family: 'Bickham Script Pro';
+            src: url('./Bickham Script Pro Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap; /* Garante que o texto apareça rápido enquanto a fonte carrega */
+        }
+
         /* Animações Personalizadas */
         .reveal {
             opacity: 0;
@@ -166,6 +176,12 @@
             position: relative;
         }
 
+        /* Aplica a fonte Bickham Script local em todos os cabeçalhos (h1 a h6) */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bickham Script Pro', 'Great Vibes', cursive !important;
+            font-weight: normal; /* Garante que a fonte script não fique "borrada" com o negrito padrão do navegador */
+        }
+
         /* Filtro CSS para transformar logo branco em Azul Marinho (#1B365D) no scroll */
         .filter-wedding-primary {
             filter: invert(1) brightness(0) saturate(100%) invert(18%) sepia(21%) saturate(2363%) hue-rotate(193deg) brightness(97%) contrast(98%);
@@ -257,8 +273,6 @@
         
         <div class="relative z-10 px-4 reveal active">
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">Vamos nos Casar</p>
-            <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">♡︎</p>
-           
             <h1 class="font-script text-7xl md:text-9xl text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards]">Sarah & Daniel</h1>
             <p class="text-white/90 text-lg md:text-2xl font-serif italic max-w-2xl mx-auto font-light leading-relaxed animate-[fadeIn_2s_ease-in_1s_forwards] opacity-0">
                 "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito." - Colossenses 3:14
