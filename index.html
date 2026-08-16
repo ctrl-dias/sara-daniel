@@ -34,8 +34,7 @@
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
                         serif: ['Cormorant Garamond', 'serif'],
-                        /* Atualizado para usar a Bickham como fonte script padrão do Tailwind */
-                        script: ['"Bickham Script Pro"', 'Great Vibes', 'cursive'],
+                        script: ['Great Vibes', 'cursive'],
                     }
                 }
             }
@@ -43,15 +42,6 @@
     </script>
 
     <style>
-        /* Importando a fonte local (arquivo na mesma pasta) */
-        @font-face {
-            font-family: 'Bickham Script Pro';
-            src: url('./Bickham Script Pro Regular.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap; /* Garante que o texto apareça rápido enquanto a fonte carrega */
-        }
-
         /* Animações Personalizadas */
         .reveal {
             opacity: 0;
@@ -176,12 +166,6 @@
             position: relative;
         }
 
-        /* Aplica a fonte Bickham Script local em todos os cabeçalhos (h1 a h6) */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Bickham Script Pro', 'Great Vibes', cursive !important;
-            font-weight: normal; /* Garante que a fonte script não fique "borrada" com o negrito padrão do navegador */
-        }
-
         /* Filtro CSS para transformar logo branco em Azul Marinho (#1B365D) no scroll */
         .filter-wedding-primary {
             filter: invert(1) brightness(0) saturate(100%) invert(18%) sepia(21%) saturate(2363%) hue-rotate(193deg) brightness(97%) contrast(98%);
@@ -274,8 +258,8 @@
         <div class="relative z-10 px-4 reveal active">
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">Vamos nos Casar</p>
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">♡︎</p>
-            
-            <h1 class="font-script text-[6rem] md:text-[11rem] leading-none text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards]">Sarah & Daniel</h1>
+           
+            <h1 class="font-script text-7xl md:text-9xl text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards]">Sarah & Daniel</h1>
             <p class="text-white/90 text-lg md:text-2xl font-serif italic max-w-2xl mx-auto font-light leading-relaxed animate-[fadeIn_2s_ease-in_1s_forwards] opacity-0">
                 "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito." - Colossenses 3:14
             </p>
@@ -329,7 +313,7 @@
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-20 reveal">
                 <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-3">Os Protagonistas</span>
-                <h2 class="font-serif text-7xl md:text-8xl text-wedding-primary">Os Noivos</h2>
+                <h2 class="font-serif text-5xl md:text-6xl text-wedding-primary">Os Noivos</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
@@ -342,7 +326,7 @@
                             <img src="https://images.unsplash.com/photo-1574871786514-46e1680ea587?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover object-top" alt="Sarah">
                         </div>
                     </div>
-                    <h3 class="font-script text-7xl text-wedding-primary mb-3">Sarah</h3>
+                    <h3 class="font-script text-5xl text-wedding-primary mb-3">Sarah</h3>
                     <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-semibold">A Noiva</p>
                     <p class="font-sans font-light text-gray-700 leading-relaxed text-sm px-4 max-w-sm mx-auto">
                         Arquiteta e sonhadora. Ama o cheiro de chuva e a tranquilidade de um domingo de manhã. Encontrou no Daniel seu porto seguro.
@@ -358,7 +342,7 @@
                             <img src="https://images.unsplash.com/photo-1606216769783-a7dbe227a17f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover object-top" alt="Daniel">
                         </div>
                     </div>
-                    <h3 class="font-script text-7xl text-wedding-primary mb-3">Daniel</h3>
+                    <h3 class="font-script text-5xl text-wedding-primary mb-3">Daniel</h3>
                     <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-semibold">O Noivo</p>
                     <p class="font-sans font-light text-gray-700 leading-relaxed text-sm px-4 max-w-sm mx-auto">
                         Engenheiro e prático. Adora música antiga e viajar sem destino. Viu na Sarah a parceira perfeita para todas as jornadas.
@@ -404,12 +388,12 @@
             <!-- Texto e Controles -->
             <div class="w-full md:w-1/2 text-center md:text-left">
                 <span class="text-wedding-secondary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Trilha Sonora</span>
-                <h2 class="font-serif text-6xl md:text-7xl text-white mb-6">A Nossa Música</h2>
+                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">A Nossa Música</h2>
                 <p class="text-gray-300 font-light text-sm leading-relaxed mb-8">
                     Existem músicas que contam uma história. Esta nos fez imaginar a nossa. Desde a primeira vez que a ouvimos, ela trouxe a sensação de um amor tranquilo, verdadeiro e atemporal. Foi essa atmosfera que inspirou muitos detalhes do nosso casamento, e agora ela também faz parte deste momento tão especial.
                 </p>
                 <div class="flex flex-col gap-2">
-                    <h4 class="font-serif text-4xl text-white">Flightless Bird, American Mouth</h4>
+                    <h4 class="font-serif text-2xl text-white">Flightless Bird, American Mouth</h4>
                     <p class="text-xs text-wedding-secondary uppercase tracking-widest">Iron & Wine</p>
                 </div>
                 <div class="mt-8">
@@ -427,7 +411,7 @@
         <div class="max-w-4xl mx-auto px-4 relative z-10">
             <div class="text-center mb-24 reveal">
                 <span class="text-wedding-accent uppercase tracking-[0.2em] text-xs font-bold block mb-2">Timeline</span>
-                <h2 class="font-serif text-7xl md:text-8xl text-wedding-primary">Nossa História</h2>
+                <h2 class="font-serif text-5xl text-wedding-primary">Nossa História</h2>
             </div>
 
             <div class="relative">
@@ -436,7 +420,7 @@
                 <!-- Evento 1 -->
                 <div class="relative flex items-center justify-between mb-24 w-full reveal delay-100 group">
                     <div class="w-5/12 text-right pr-12 order-1">
-                        <h3 class="font-serif text-5xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Primeiro Olhar</h3>
+                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Primeiro Olhar</h3>
                         <span class="text-wedding-primary text-xs uppercase tracking-widest font-bold">Junho, 2018</span>
                         <p class="mt-4 text-gray-600 font-light text-sm leading-relaxed">Nos conhecemos em uma festa de amigos em comum. Foi um encontro casual que mudou tudo.</p>
                     </div>
@@ -449,7 +433,7 @@
                     <div class="w-5/12 pr-12 order-1"></div>
                     <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-wedding-primary shadow-[0_0_0_5px_rgba(27,54,93,0.2)] order-2 z-10 transition-all duration-300 group-hover:scale-150 group-hover:bg-wedding-primary"></div>
                     <div class="w-5/12 text-left pl-12 order-3">
-                        <h3 class="font-serif text-5xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Primeiro Beijo</h3>
+                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Primeiro Beijo</h3>
                         <span class="text-wedding-primary text-xs uppercase tracking-widest font-bold">Agosto, 2018</span>
                         <p class="mt-4 text-gray-600 font-light text-sm leading-relaxed">Depois de muitos cafés e conversas, finalmente aconteceu nosso primeiro beijo sob a chuva.</p>
                     </div>
@@ -458,7 +442,7 @@
                 <!-- Evento 3 -->
                 <div class="relative flex items-center justify-between w-full reveal delay-300 group">
                     <div class="w-5/12 text-right pr-12 order-1">
-                        <h3 class="font-serif text-5xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Pedido</h3>
+                        <h3 class="font-serif text-3xl text-wedding-dark mb-1 transition-colors group-hover:text-wedding-primary">O Pedido</h3>
                         <span class="text-wedding-primary text-xs uppercase tracking-widest font-bold">Dezembro, 2024</span>
                         <p class="mt-4 text-gray-600 font-light text-sm leading-relaxed">Em uma viagem inesquecível para a Itália, ele ajoelhou e fez a pergunta mais importante.</p>
                     </div>
@@ -473,7 +457,7 @@
     <section class="relative py-32 md:py-80 bg-top bg-cover parallax group overflow-hidden" style="background-image: url('https://plain-enam-prod-public.komododecks.com/202607/29/c5bK23Bgx5xfVqfA9gXR/image.jpg');">
         <div class="absolute inset-0 bg-wedding-dark/50 mix-blend-multiply transition-colors duration-1000 group-hover:bg-wedding-primary/40"></div>
         <div class="relative z-10 text-center px-4 reveal active">
-             <h3 class="font-script text-7xl md:text-[9rem] leading-none text-white drop-shadow-2xl transform transition-transform duration-[2s] group-hover:scale-110 group-hover:tracking-wider">
+             <h3 class="font-script text-6xl md:text-8xl text-white drop-shadow-2xl transform transition-transform duration-[2s] group-hover:scale-110 group-hover:tracking-wider">
                 Eternamente Nós
              </h3>
              <p class="mt-4 text-white/90 text-sm tracking-[0.4em] uppercase opacity-0 transform translate-y-4 transition-all duration-1000 group-hover:opacity-100 group-hover:translate-y-0 delay-300">
@@ -487,7 +471,7 @@
         <div class="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="text-center mb-24 reveal">
-                <h2 class="font-serif text-7xl md:text-8xl text-wedding-primary">Cerimônia & Recepção</h2>
+                <h2 class="font-serif text-5xl md:text-6xl text-wedding-primary">Cerimônia & Recepção</h2>
                 <div class="w-16 h-px bg-wedding-primary mx-auto mt-6"></div>
             </div>
 
@@ -497,7 +481,7 @@
                     <div class="w-20 h-20 bg-wedding-light rounded-full flex items-center justify-center mx-auto mb-8 text-wedding-primary group-hover:bg-wedding-primary group-hover:text-white transition-colors duration-300">
                         <i data-lucide="church" class="w-10 h-10"></i>
                     </div>
-                    <h3 class="font-serif text-5xl mb-3 text-wedding-dark">A Cerimônia</h3>
+                    <h3 class="font-serif text-3xl mb-3 text-wedding-dark">A Cerimônia</h3>
                     <p class="text-wedding-primary font-bold text-xs tracking-[0.2em] uppercase mb-6">16:00 Horas</p>
                     <p class="text-gray-600 mb-8 font-light leading-relaxed">Capela Nossa Senhora do Amor<br>Rua das Flores, 123 - Jardins</p>
                     <a href="https://maps.google.com" target="_blank" class="inline-block px-8 py-4 bg-wedding-primary text-white hover:bg-wedding-dark transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-lg">
@@ -510,7 +494,7 @@
                     <div class="w-20 h-20 bg-wedding-light rounded-full flex items-center justify-center mx-auto mb-8 text-wedding-primary group-hover:bg-wedding-primary group-hover:text-white transition-colors duration-300">
                         <i data-lucide="wine" class="w-10 h-10"></i>
                     </div>
-                    <h3 class="font-serif text-5xl mb-3 text-wedding-dark">A Festa</h3>
+                    <h3 class="font-serif text-3xl mb-3 text-wedding-dark">A Festa</h3>
                     <p class="text-wedding-primary font-bold text-xs tracking-[0.2em] uppercase mb-6">18:00 Horas</p>
                     <p class="text-gray-600 mb-8 font-light leading-relaxed">Espaço Villa Garden<br>Av. Principal, 500 - Alto da Colina</p>
                     <a href="https://maps.google.com" target="_blank" class="inline-block px-8 py-4 bg-wedding-primary text-white hover:bg-wedding-dark transition-all duration-300 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full shadow-lg">
@@ -526,7 +510,7 @@
         <div class="max-w-7xl mx-auto px-4">
              <div class="text-center mb-20 reveal">
                 <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Momentos</span>
-                <h2 class="font-serif text-6xl md:text-7xl text-wedding-primary">Galeria de Fotos</h2>
+                <h2 class="font-serif text-4xl md:text-5xl text-wedding-primary">Galeria de Fotos</h2>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal delay-100">
@@ -575,7 +559,7 @@
         <div class="max-w-6xl mx-auto px-4">
              <div class="text-center mb-20 reveal">
                 <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Para seu conforto</span>
-                <h2 class="font-serif text-6xl md:text-7xl text-wedding-primary">Dicas & Recomendações</h2>
+                <h2 class="font-serif text-4xl md:text-5xl text-wedding-primary">Dicas & Recomendações</h2>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal delay-100">
@@ -588,7 +572,7 @@
                              <i data-lucide="bed-double" class="w-5 h-5"></i>
                              <span class="text-xs uppercase tracking-widest font-bold">Hospedagem</span>
                         </div>
-                        <h3 class="font-serif text-4xl text-wedding-dark mb-3">Grand Hotel Jardins</h3>
+                        <h3 class="font-serif text-2xl text-wedding-dark mb-3">Grand Hotel Jardins</h3>
                         <p class="text-gray-600 font-light text-sm mb-4 leading-relaxed">
                             Conseguimos uma tarifa especial para nossos convidados. Utilize o cupom <strong class="text-wedding-primary">MARIANA26</strong>.
                         </p>
@@ -605,7 +589,7 @@
                              <i data-lucide="scissors" class="w-5 h-5"></i>
                              <span class="text-xs uppercase tracking-widest font-bold">Beleza</span>
                         </div>
-                        <h3 class="font-serif text-4xl text-wedding-dark mb-3">Studio Beauty</h3>
+                        <h3 class="font-serif text-2xl text-wedding-dark mb-3">Studio Beauty</h3>
                         <p class="text-gray-600 font-light text-sm mb-4 leading-relaxed">
                             Especialistas em maquiagem e penteados para festas. Recomendamos agendar com 1 mês de antecedência.
                         </p>
@@ -621,7 +605,7 @@
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-24 reveal">
                 <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Lua de Mel</span>
-                <h2 class="font-serif text-7xl md:text-8xl text-wedding-primary">Lista de Presentes</h2>
+                <h2 class="font-serif text-5xl md:text-6xl text-wedding-primary">Lista de Presentes</h2>
                 <p class="mt-6 text-gray-500 font-light max-w-2xl mx-auto text-sm leading-relaxed">
                     Caso queira nos presentear, optamos por uma lista virtual de experiências.
                 </p>
@@ -634,7 +618,7 @@
                         <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
                     </div>
                     <div class="p-8 text-center relative z-20 bg-white">
-                        <h4 class="font-serif text-4xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Jantar Romântico</h4>
+                        <h4 class="font-serif text-2xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Jantar Romântico</h4>
                         <p class="text-wedding-primary font-bold mb-6 text-sm">R$ 200,00</p>
                         <button onclick="copiarPix()" class="w-full bg-wedding-primary text-white py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-dark transition-all duration-300 shadow-md">Presentear</button>
                     </div>
@@ -646,7 +630,7 @@
                         <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
                     </div>
                     <div class="p-8 text-center relative z-20 bg-white">
-                        <h4 class="font-serif text-4xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Spa Day</h4>
+                        <h4 class="font-serif text-2xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Spa Day</h4>
                         <p class="text-wedding-primary font-bold mb-6 text-sm">R$ 350,00</p>
                         <button onclick="copiarPix()" class="w-full bg-wedding-primary text-white py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-dark transition-all duration-300 shadow-md">Presentear</button>
                     </div>
@@ -658,7 +642,7 @@
                         <img src="https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
                     </div>
                     <div class="p-8 text-center relative z-20 bg-white">
-                        <h4 class="font-serif text-4xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Passeio de Barco</h4>
+                        <h4 class="font-serif text-2xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Passeio de Barco</h4>
                         <p class="text-wedding-primary font-bold mb-6 text-sm">R$ 500,00</p>
                         <button onclick="copiarPix()" class="w-full bg-wedding-primary text-white py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-dark transition-all duration-300 shadow-md">Presentear</button>
                     </div>
@@ -670,7 +654,7 @@
                         <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
                     </div>
                     <div class="p-8 text-center relative z-20 bg-white">
-                        <h4 class="font-serif text-4xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Cota Livre</h4>
+                        <h4 class="font-serif text-2xl mb-2 text-wedding-dark group-hover:text-wedding-primary transition-colors">Cota Livre</h4>
                         <p class="text-wedding-primary font-bold mb-6 text-sm">Qualquer Valor</p>
                         <button onclick="copiarPix()" class="w-full bg-wedding-primary text-white py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-wedding-dark transition-all duration-300 shadow-md">Presentear</button>
                     </div>
@@ -682,7 +666,7 @@
     <!-- Dress Code -->
     <section id="palette" class="py-32 bg-wedding-light border-y border-gray-200">
         <div class="max-w-5xl mx-auto px-4 text-center reveal">
-            <h2 class="font-serif text-7xl md:text-8xl mb-4 text-wedding-primary">Dress Code</h2>
+            <h2 class="font-serif text-5xl md:text-6xl mb-4 text-wedding-primary">Dress Code</h2>
             <p class="font-sans text-gray-600 mb-16 font-light">Inspirações para o grande dia</p>
             <div class="flex flex-wrap justify-center gap-12">
                 <div class="flex flex-col items-center group cursor-pointer">
@@ -706,7 +690,7 @@
          <div class="max-w-4xl mx-auto px-4">
              <div class="text-center mb-16 reveal">
                  <span class="text-wedding-primary uppercase tracking-[0.2em] text-xs font-bold block mb-2">Informações Importantes</span>
-                <h2 class="font-serif text-6xl md:text-7xl text-wedding-primary">Dúvidas Frequentes</h2>
+                <h2 class="font-serif text-4xl md:text-5xl text-wedding-primary">Dúvidas Frequentes</h2>
             </div>
             
             <div class="space-y-4 reveal delay-100">
@@ -760,7 +744,7 @@
                  <i data-lucide="mail-open" class="w-10 h-10 text-wedding-primary animate-bounce"></i>
             </div>
             
-            <h2 class="font-serif text-7xl md:text-8xl mb-6">Confirme sua Presença</h2>
+            <h2 class="font-serif text-5xl md:text-6xl mb-6">Confirme sua Presença</h2>
             <p class="font-sans text-gray-300 mb-12 text-sm tracking-widest uppercase">
                 Por favor, preencha os detalhes abaixo até 20 de Novembro de 2026.
             </p>
@@ -833,7 +817,7 @@
     <footer class="bg-wedding-primary text-white py-20 border-t-4 border-wedding-dark relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.05]"></div>
         <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
-            <h2 class="font-script text-[6rem] md:text-[9rem] leading-none text-white mb-10 opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-default drop-shadow-lg">Sarah & Daniel</h2>
+            <h2 class="font-script text-7xl text-white mb-10 opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-default drop-shadow-lg">Sarah & Daniel</h2>
             <div class="flex justify-center space-x-10 mb-12 text-white/60">
                 <a href="#" class="hover:text-white transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                 <a href="#" class="hover:text-white transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="facebook" class="w-6 h-6"></i></a>
