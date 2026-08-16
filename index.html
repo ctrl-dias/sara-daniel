@@ -165,6 +165,11 @@
         .gallery-item {
             position: relative;
         }
+
+        /* Filtro CSS para transformar logo branco em Azul Marinho (#1B365D) no scroll */
+        .filter-wedding-primary {
+            filter: invert(1) brightness(0) saturate(100%) invert(18%) sepia(21%) saturate(2363%) hue-rotate(193deg) brightness(97%) contrast(98%);
+        }
     </style>
 </head>
 
@@ -203,7 +208,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0 flex items-center group cursor-default">
-                    <span id="nav-logo" class="font-script text-3xl text-white transition-all duration-500 group-hover:scale-110">S & D</span>
+                    <!-- Logo usando a tag IMG com caminho direto na raiz (./) -->
+                    <img id="nav-logo" src="./Correcting_out_of_focus_logo_202608161107-removebg-preview.png" alt="Sarah & Daniel" class="w-20 h-20 object-contain transition-all duration-500 group-hover:scale-105">
                 </div>
                 
                 <div class="hidden lg:block">
@@ -446,8 +452,6 @@
     </section>
 
     <!-- Transição Parallax - ETERNAMENTE NÓS -->
-    <!-- RESOLVIDO: Substituído 'bg-center' por 'bg-top' para focar nos rostos, aliado à atualização na classe .parallax no CSS -->
-    <!-- Ajuste Mobile: Retirado o 'bg-fixed' nativo (resolvido via CSS acima) e reduzido a altura mobile para 'py-32' mostrando mais a largura da foto -->
     <section class="relative py-32 md:py-80 bg-top bg-cover parallax group overflow-hidden" style="background-image: url('https://plain-enam-prod-public.komododecks.com/202607/29/c5bK23Bgx5xfVqfA9gXR/image.jpg');">
         <div class="absolute inset-0 bg-wedding-dark/50 mix-blend-multiply transition-colors duration-1000 group-hover:bg-wedding-primary/40"></div>
         <div class="relative z-10 text-center px-4 reveal active">
@@ -946,8 +950,7 @@
                 navbar.classList.remove('bg-transparent', 'py-6');
                 
                 if (navLogo) {
-                    navLogo.classList.remove('text-white');
-                    navLogo.classList.add('text-wedding-primary');
+                    navLogo.classList.add('filter-wedding-primary');
                 }
                 
                 navLinks.forEach(link => {
@@ -964,8 +967,7 @@
                 navbar.classList.add('bg-transparent', 'py-6');
                 
                 if (navLogo) {
-                    navLogo.classList.remove('text-wedding-primary');
-                    navLogo.classList.add('text-white');
+                    navLogo.classList.remove('filter-wedding-primary');
                 }
                 
                 navLinks.forEach(link => {
