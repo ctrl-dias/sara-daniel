@@ -16,7 +16,6 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Configuração de Cores Personalizadas -->
     <script>
         tailwind.config = {
             theme: {
@@ -255,11 +254,17 @@
         <!-- Camada de overlay escura base com um levíssimo tom de azul -->
         <div class="absolute inset-0 bg-wedding-dark/40 mix-blend-multiply"></div>
         
-        <div class="relative z-10 px-4 reveal active">
+        <div class="relative z-10 px-4 reveal active w-full">
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">Vamos nos Casar</p>
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">♡︎</p>
-           
-            <h1 class="font-script text-7xl md:text-9xl text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards]">Sarah & Daniel</h1>
+            
+            <!-- AQUI FOI FEITO O AJUSTE PRINCIPAL: flexbox para alinhar, whitespace-nowrap para não quebrar linha e tamanhos de fonte responsivos específicos -->
+            <h1 class="font-script text-5xl min-[400px]:text-6xl sm:text-7xl md:text-9xl text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards] flex flex-row items-center justify-center whitespace-nowrap">
+                Sarah 
+                <span class="text-3xl min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl mx-2 sm:mx-3 md:mx-4 lg:mx-6 font-light opacity-90">&</span> 
+                Daniel
+            </h1>
+            
             <p class="text-white/90 text-lg md:text-2xl font-serif italic max-w-2xl mx-auto font-light leading-relaxed animate-[fadeIn_2s_ease-in_1s_forwards] opacity-0">
                 "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito." - Colossenses 3:14
             </p>
@@ -329,7 +334,7 @@
                     <h3 class="font-script text-5xl text-wedding-primary mb-3">Sarah</h3>
                     <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-semibold">A Noiva</p>
                     <p class="font-sans font-light text-gray-700 leading-relaxed text-sm px-4 max-w-sm mx-auto">
-                        Arquiteta e sonhadora. Ama o cheiro de chuva e a tranquilidade de um domingo de manhã. Encontrou no Daniel seu porto seguro.
+                        Romântica, sonhadora e apaixonada pelos detalhes. Sarah sempre imaginou o amor como uma história para ser vivida nos pequenos momentos, nos gestos e nas memórias que ficam para sempre. Encontrou em Daniel não apenas o amor da sua vida, mas também aquele que escolheu para dividir todos os seus sonhos e construir seu futuro.
                     </p>
                 </div>
 
@@ -345,7 +350,7 @@
                     <h3 class="font-script text-5xl text-wedding-primary mb-3">Daniel</h3>
                     <p class="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-6 font-semibold">O Noivo</p>
                     <p class="font-sans font-light text-gray-700 leading-relaxed text-sm px-4 max-w-sm mx-auto">
-                        Engenheiro e prático. Adora música antiga e viajar sem destino. Viu na Sarah a parceira perfeita para todas as jornadas.
+                        Tem seu jeito próprio de demonstrar carinho, é companheiro e, quando decide fazer parte de algo, está ali de verdade. Entre planos, viagens, músicas e muitos momentos compartilhados, Daniel construiu sua própria história — e agora começa uma nova fase
                     </p>
                 </div>
             </div>
@@ -817,7 +822,14 @@
     <footer class="bg-wedding-primary text-white py-20 border-t-4 border-wedding-dark relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.05]"></div>
         <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
-            <h2 class="font-script text-7xl text-white mb-10 opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-default drop-shadow-lg">Sarah & Daniel</h2>
+            
+            <!-- AQUI FOI FEITO O AJUSTE PRINCIPAL NO RODAPÉ TAMBÉM: flexbox e whitespace-nowrap -->
+            <h2 class="font-script text-5xl min-[400px]:text-6xl md:text-7xl text-white mb-10 opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-default drop-shadow-lg flex items-center justify-center whitespace-nowrap">
+                Sarah 
+                <span class="text-3xl min-[400px]:text-4xl md:text-5xl mx-2 sm:mx-3 font-light">&</span> 
+                Daniel
+            </h2>
+
             <div class="flex justify-center space-x-10 mb-12 text-white/60">
                 <a href="#" class="hover:text-white transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="instagram" class="w-6 h-6"></i></a>
                 <a href="#" class="hover:text-white transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"><i data-lucide="facebook" class="w-6 h-6"></i></a>
