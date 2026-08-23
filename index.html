@@ -258,7 +258,6 @@
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">Vamos nos Casar</p>
             <p class="text-white/90 text-xs md:text-sm font-sans tracking-[0.4em] uppercase mb-6 animate-[fadeIn_2s_ease-in]">♡︎</p>
             
-            <!-- AQUI FOI FEITO O AJUSTE PRINCIPAL: flexbox para alinhar, whitespace-nowrap para não quebrar linha e tamanhos de fonte responsivos específicos -->
             <h1 class="font-script text-5xl min-[400px]:text-6xl sm:text-7xl md:text-9xl text-white mb-8 drop-shadow-2xl opacity-0 animate-[scaleIn_1.5s_ease-out_0.5s_forwards] flex flex-row items-center justify-center whitespace-nowrap">
                 Sarah 
                 <span class="text-3xl min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl mx-2 sm:mx-3 md:mx-4 lg:mx-6 font-light opacity-90">&</span> 
@@ -303,9 +302,10 @@
                 </div>
             </div>
             
-            <!-- Botão Adicionar ao Calendário -->
+            <!-- Botão Adicionar ao Calendário - DATA ATUALIZADA AQUI -->
             <div class="mt-12 reveal delay-300">
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Sarah+e+Daniel&dates=20261212T160000/20261212T235900&details=Celebração+do+nosso+casamento!&location=Capela+Nossa+Senhora+do+Amor,+Jardins" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-wedding-primary text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-wedding-dark transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                <!-- Alterado dates para: 20270320T150000/20270320T235900 (20/03/2027) e Local também corrigido -->
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamento+Sarah+e+Daniel&dates=20270320T150000/20270320T235900&details=Celebração+do+nosso+casamento!&location=Villa+Vezzane,+R.+Benedito+Fontana,+510+-+Mairiporã,+SP" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-wedding-primary text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-wedding-dark transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                     <i data-lucide="calendar-plus" class="w-4 h-4"></i>
                     Salvar na Agenda
                 </a>
@@ -724,7 +724,6 @@ para a vida inteira.</p>
                 Por favor, preencha os detalhes abaixo até 20 de Novembro de 2026.
             </p>
 
-            <!-- AQUI: Adicionado action do formsubmit, method post, e os atributos name para enviar tudo bonitinho pro email -->
             <form action="https://formsubmit.co/xjonathan.willian@gmail.com" method="POST" class="space-y-8 text-left bg-wedding-primary/10 p-10 md:p-14 rounded-3xl backdrop-blur-md border border-wedding-primary/30 shadow-2xl">
                 
                 <!-- Configurações opcionais do Formsubmit para deixar o email mais bonito -->
@@ -802,7 +801,6 @@ para a vida inteira.</p>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.05]"></div>
         <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
             
-            <!-- AQUI FOI FEITO O AJUSTE PRINCIPAL NO RODAPÉ TAMBÉM: flexbox e whitespace-nowrap -->
             <h2 class="font-script text-5xl min-[400px]:text-6xl md:text-7xl text-white mb-10 opacity-90 hover:opacity-100 transition-opacity duration-500 cursor-default drop-shadow-lg flex items-center justify-center whitespace-nowrap">
                 Sarah 
                 <span class="text-3xl min-[400px]:text-4xl md:text-5xl mx-2 sm:mx-3 font-light">&</span> 
@@ -975,14 +973,28 @@ para a vida inteira.</p>
             }
         });
 
-        const weddingDate = new Date("December 12, 2026 16:00:00").getTime();
+        // DATA ATUALIZADA AQUI: O contador agora vai apontar para 20 de Março de 2027 às 15:00
+        const weddingDate = new Date("March 20, 2027 15:00:00").getTime();
+        
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
+            
+            // Garantir que a contagem não fique negativa caso a data já tenha passado
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
