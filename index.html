@@ -863,7 +863,6 @@ para a vida inteira.</p>
                 playOverlay.classList.remove('opacity-0');
                 floatingPlayer.classList.add('translate-y-20', 'opacity-0');
                 floatIcon.setAttribute('data-lucide', 'play');
-                stopPetals();
                 bars.forEach(bar => bar.classList.add('paused-bar'));
             } else {
                 audio.play();
@@ -872,7 +871,6 @@ para a vida inteira.</p>
                 playOverlay.classList.add('opacity-0');
                 floatingPlayer.classList.remove('translate-y-20', 'opacity-0');
                 floatIcon.setAttribute('data-lucide', 'pause');
-                startPetals();
                 bars.forEach(bar => bar.classList.remove('paused-bar'));
             }
             isPlaying = !isPlaying;
@@ -901,10 +899,8 @@ para a vida inteira.</p>
             }
         }
 
-        function stopPetals() {
-            clearInterval(petalInterval);
-            petalInterval = null;
-        }
+        // Inicia as pétalas automaticamente sem depender da música
+        startPetals();
 
         function toggleAccordion(button) {
             const content = button.nextElementSibling;
